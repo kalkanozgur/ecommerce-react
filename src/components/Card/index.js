@@ -9,7 +9,7 @@ function Card({ item }) {
 	return (
 		<div>
 			<Box borderWidth="1px" borderRadius="lg" overflow="visible" p="3">
-				<Link to={"#/"}>
+				<Link to={`/product/${item._id}`}>
 					<Image src={item.photos[0]} alt="product" loading="lazy"></Image>
 					<Box p={"6"}>
 						<Box d="plex" alignItems="baseline">
