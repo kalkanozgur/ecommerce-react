@@ -10,7 +10,6 @@ function App() {
 	return (
 		<div className="App">
 			<Navbar />
-			{console.log(Routess)}
 			<div className={Routess}>
 				<Routes>
 					<Route path="/" element={<Products />} />
