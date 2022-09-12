@@ -19,7 +19,7 @@ function ProductDetail() {
 	if (error) {
 		return <div>Error: {error}</div>;
 	}
-
+	// console.log(data);
 	const images = data.photos.map((url) => ({ original: url }));
 
 	return (
