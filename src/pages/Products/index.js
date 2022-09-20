@@ -30,7 +30,7 @@ function Products() {
 
 	if (status === "error") return "An error has occurred: " + error.message;
 
-	console.log(data);
+	console.log(data.pages);
 	return (
 		<div>
 			<Grid templateColumns="repeat(3, 1fr)" gap={6}>
