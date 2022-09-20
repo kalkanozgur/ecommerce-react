@@ -11,7 +11,7 @@ function Card({ item }) {
 	const { addToBasket, items } = useBasket();
 
 	const findBasketItem = items.find((data) => data._id === item._id);
-	console.log(findBasketItem);
+
 	return (
 		<div>
 			<Box borderWidth="1px" borderRadius="lg" overflow="visible" p="3">
