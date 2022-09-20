@@ -20,11 +20,14 @@ function Basket() {
 						{items.map((item) => (
 							<li key={item._id} style={{ marginBottom: 15 }}>
 								<Link to={`/product/${item._id}`}>
-									{item.title} -{item.price} TL
+									<Text fontSize={18}>
+										{item.title} -{item.price} TL
+									</Text>
 									<Image
 										htmlWidth={200}
 										src={item.photos[0]}
 										alt={"basket item"}
+										loading={"lazy"}
 									/>
 								</Link>
 								<Button
