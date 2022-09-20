@@ -5,7 +5,13 @@ import moment from "moment";
 
 import React from "react";
 
+import { useBasket } from "./../../context/BasketContext";
+
 function Card({ item }) {
+	const { addToBasket, items } = useBasket();
+
+	const findBasketItem = items.find((data) => data._id === item._id);
+	console.log(findBasketItem);
 	return (
 		<div>
 			<Box borderWidth="1px" borderRadius="lg" overflow="visible" p="3">
@@ -21,7 +27,12 @@ function Card({ item }) {
 						<Box>{item.price}</Box>
 					</Box>
 				</Link>
-				<Button colorScheme={"pink"}>Add to Basket</Button>
+				<Button
+					colorScheme={findBasketItem ? "pink" : "green"}
+					onClick={() => addToBasket(item, findBasketItem)}
+				>
+					{findBasketItem ? "Remove from basket" : "Add to basket"}
+				</Button>
 			</Box>
 		</div>
 	);

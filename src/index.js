@@ -12,6 +12,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { AuthProvider } from "./context/AuthContext";
+import { BasketProvider } from "./context/BasketContext";
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -24,18 +25,20 @@ const queryClient = new QueryClient({
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-	<AuthProvider>
-		<React.StrictMode>
-			<QueryClientProvider client={queryClient}>
+	<React.StrictMode>
+		<QueryClientProvider client={queryClient}>
+			<ChakraProvider>
 				<BrowserRouter>
-					<ChakraProvider>
-						<App />
-					</ChakraProvider>
+					<AuthProvider>
+						<BasketProvider>
+							<App />
+						</BasketProvider>
+					</AuthProvider>
 				</BrowserRouter>
-				<ReactQueryDevtools initialIsOpen={false} />
-			</QueryClientProvider>
-		</React.StrictMode>
-	</AuthProvider>
+			</ChakraProvider>
+			<ReactQueryDevtools initialIsOpen={false} />
+		</QueryClientProvider>
+	</React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
