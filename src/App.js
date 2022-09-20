@@ -1,6 +1,10 @@
 import Routess from "./App.css";
 import { Routes, Route } from "react-router-dom";
+
 import Navbar from "./components/Navbar";
+
+import ProtectedRoute from "./pages/ProtectedRoute";
+
 import ErrorPage from "./pages/errorPage";
 import Products from "./pages/Products";
 import Signin from "./pages/auth/Signin";
@@ -18,7 +22,10 @@ function App() {
 					<Route path="/product/:product_id" element={<ProductDetail />} />
 					<Route path="/signin" element={<Signin />} />
 					<Route path="/signup" element={<Signup />} />
-					<Route path="/profile" element={<Profile />} />
+					{/* react-router-dom v6 */}
+					<Route element={<ProtectedRoute />}>
+						<Route path="/profile" element={<Profile />} />
+					</Route>
 					<Route path="*" element={<ErrorPage />} />
 				</Routes>
 			</div>

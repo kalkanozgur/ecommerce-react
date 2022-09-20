@@ -6,8 +6,8 @@ import { Text, Button } from "@chakra-ui/react";
 import { useAuth } from "./../../context/AuthContext";
 
 function Profile() {
-	let navigate = useNavigate();
 	const { user, logout } = useAuth();
+	let navigate = useNavigate();
 	const handleLogout = async () => {
 		logout(() => {
 			navigate("../");

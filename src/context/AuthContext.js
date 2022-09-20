@@ -9,6 +9,7 @@ const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
 	const [loggedIn, setLoggedIn] = useState(false);
 	const [loading, setLoading] = useState(true);
+	console.log("loggedIn", loggedIn);
 
 	useEffect(() => {
 		//
