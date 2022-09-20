@@ -21,16 +21,25 @@ import {
 
 import { useBasket } from "./../../context/BasketContext";
 import { Link } from "react-router-dom";
+import { postOrder } from "../../api";
 
 function Basket() {
-	const { items, removeFromBasket } = useBasket();
+	const { items, removeFromBasket, emptyBasket } = useBasket();
 	const total = items.reduce((acc, obj) => acc + obj.price, 0);
 
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const initialRef = useRef();
-	const [adress, setAdress] = useState();
+	const [address, setAddress] = useState();
 	const handleSubmit = async () => {
 		const itemIds = items.map((item) => item._id);
+		const input = {
+			address,
+			items: JSON.stringify(itemIds),
+		};
+
+		await postOrder(input);
+		emptyBasket();
+		onClose();
 	};
 
 	return (
@@ -81,12 +90,12 @@ function Basket() {
 							<ModalCloseButton />
 							<ModalBody pb={6}>
 								<FormControl>
-									<FormLabel>Adress</FormLabel>
+									<FormLabel>Address</FormLabel>
 									<Textarea
 										ref={initialRef}
-										placeholder="Adress"
-										value={adress}
-										onChange={(e) => setAdress(e.target.value)}
+										placeholder="Address"
+										value={address}
+										onChange={(e) => setAddress(e.target.value)}
 									/>
 								</FormControl>
 							</ModalBody>
