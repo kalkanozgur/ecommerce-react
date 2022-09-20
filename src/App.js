@@ -10,6 +10,7 @@ import Products from "./pages/Products";
 import Signin from "./pages/auth/Signin";
 import Signup from "./pages/auth/Signup";
 import Profile from "./pages/Profile";
+import Basket from "./pages/Basket";
 import ProductDetail from "./pages/ProductDetail";
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
 					<Route path="/product/:product_id" element={<ProductDetail />} />
 					<Route path="/signin" element={<Signin />} />
 					<Route path="/signup" element={<Signup />} />
+					Basket
+					<Route path="/basket" element={<Basket />} />
 					{/* react-router-dom v6 */}
 					<Route element={<ProtectedRoute />}>
 						<Route path="/profile" element={<Profile />} />
