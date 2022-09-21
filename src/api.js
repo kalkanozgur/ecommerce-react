@@ -30,7 +30,7 @@ export const fetchProduct = async (id) => {
 	const { data } = await axios.get(
 		`${process.env.REACT_APP_BASE_ENDPOINT}/product/${id}`
 	);
-	console.log("data", data);
+	// console.log("data", data);
 	return data;
 };
 
@@ -72,6 +72,14 @@ export const postOrder = async (input) => {
 	const { data } = await axios.post(
 		`${process.env.REACT_APP_BASE_ENDPOINT}/order`,
 		input
+	);
+	console.log(data);
+	return data;
+};
+
+export const fetchOrders = async () => {
+	const { data } = await axios.get(
+		`${process.env.REACT_APP_BASE_ENDPOINT}/order`
 	);
 	return data;
 };
