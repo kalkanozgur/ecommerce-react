@@ -7,6 +7,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import "./index.css";
 import "./reset.css";
+import "antd/dist/antd.min.css";
 import { ChakraProvider } from "@chakra-ui/react";
 
 import App from "./App";
