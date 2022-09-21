@@ -14,6 +14,7 @@ import Profile from "./pages/Profile";
 import AdminHome from "./pages/Admin/Home";
 import Orders from "./pages/Admin/Orders";
 import AdminProducts from "./pages/Admin/Products";
+import AdminProductsDetail from "./pages/Admin/ProductDetail";
 import Basket from "./pages/Basket";
 import ProductDetail from "./pages/ProductDetail";
 
@@ -38,6 +39,10 @@ function App() {
 						<Route index path="/admin" element={<AdminHome />} />
 						<Route path="/admin/orders" element={<Orders />} />
 						<Route path="/admin/products" element={<AdminProducts />} />
+						<Route
+							path="/admin/products/:product_id"
+							element={<AdminProductsDetail />}
+						/>
 					</Route>
 					<Route path="*" element={<ErrorPage />} />
 				</Routes>
