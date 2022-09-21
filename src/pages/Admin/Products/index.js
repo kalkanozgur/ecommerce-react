@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { fetchAllProducts, deleteProduct } from "../../../api";
-import { Text } from "@chakra-ui/react";
+import { Button, Flex, Text } from "@chakra-ui/react";
 import { Popconfirm, Table } from "antd";
 import { Link } from "react-router-dom";
 
@@ -62,7 +62,12 @@ function AdminProducts() {
 	const dataSource = data;
 	return (
 		<div>
-			<Text fontSize={"2xl"}>Products</Text>
+			<Flex justifyContent={"space-between"} alignItems={"center"}>
+				<Text fontSize={"2xl"}>Products</Text>
+				<Link to={"/admin/products/new"}>
+					<Button>New Product</Button>
+				</Link>
+			</Flex>
 			<Table dataSource={dataSource} columns={columns} rowKey={"_id"}></Table>
 		</div>
 	);

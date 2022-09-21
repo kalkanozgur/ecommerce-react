@@ -17,6 +17,7 @@ import AdminProducts from "./pages/Admin/Products";
 import AdminProductsDetail from "./pages/Admin/ProductDetail";
 import Basket from "./pages/Basket";
 import ProductDetail from "./pages/ProductDetail";
+import NewProduct from "./pages/Admin/Products/new";
 
 function App() {
 	return (
@@ -43,6 +44,7 @@ function App() {
 							path="/admin/products/:product_id"
 							element={<AdminProductsDetail />}
 						/>
+						<Route path="/admin/products/new" element={<NewProduct />} />
 					</Route>
 					<Route path="*" element={<ErrorPage />} />
 				</Routes>
