@@ -9,6 +9,7 @@ const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
 	const [loggedIn, setLoggedIn] = useState(false);
 	const [loading, setLoading] = useState(true);
+	const [isUserAdmin, setIsUserAdmin] = useState(false);
 	console.log("loggedIn", loggedIn);
 
 	useEffect(() => {
@@ -46,6 +47,9 @@ const AuthProvider = ({ children }) => {
 
 		localStorage.setItem("access-token", data.accessToken);
 		localStorage.setItem("refresh-token", data.refreshToken);
+		if (user.role === "admin") {
+			setIsUserAdmin(true);
+		}
 	};
 
 	const values = {
@@ -53,6 +57,7 @@ const AuthProvider = ({ children }) => {
 		loggedIn,
 		login,
 		logout,
+		isUserAdmin,
 	};
 	if (loading) {
 		return (
