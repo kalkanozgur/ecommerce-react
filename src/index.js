@@ -2,22 +2,43 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import { BrowserRouter } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import "./index.css";
 import "./reset.css";
+import "antd/dist/antd.min.css";
 import { ChakraProvider } from "@chakra-ui/react";
 
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { AuthProvider } from "./context/AuthContext";
+import { BasketProvider } from "./context/BasketContext";
+
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			refetchOnMount: false,
+			refetchOnWindowFocus: false,
+		},
+	},
+});
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<React.StrictMode>
-		<BrowserRouter>
+		<QueryClientProvider client={queryClient}>
 			<ChakraProvider>
-				<App />
+				<BrowserRouter>
+					<AuthProvider>
+						<BasketProvider>
+							<App />
+						</BasketProvider>
+					</AuthProvider>
+				</BrowserRouter>
 			</ChakraProvider>
-		</BrowserRouter>
+			<ReactQueryDevtools initialIsOpen={false} />
+		</QueryClientProvider>
 	</React.StrictMode>
 );
 
